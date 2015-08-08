@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Kannada</title>
+	
+	<link href="/static/style.css" rel="stylesheet"/>
+
+	<style>
+	body {
+		margin-top: 100px;
+	}
+	.banner {
+		text-align: center;
+	}
+	.owl {
+		max-width:100% !important;
+		height:auto;
+		display:block;
+	}
+	</style>
+</head>
+<body>
+
+	<div class='navbar fixed'>
+		<div class='container'>
+			<a href="/"><h4 class='pull-left' >Kannada</h4></a>
+			<ul class='pull-right'>
+				<li><a href='/explore'>+Submit</a></li>
+				<li><a href='/about'>About</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	{% block content %}
+    {% endblock %}      
+	
+
+</body>
+</html>

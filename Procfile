@@ -1,0 +1,1 @@
+web: gunicorn kasturi.wsgi --log-file -
