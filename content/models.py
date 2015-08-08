@@ -10,11 +10,20 @@ class LinkVoteCountManager(models.Manager):
 
 
 class Content(models.Model):
+	ARTICLE = 0
+	VIDEO = 1
+	MUSIC = 2
+	SERVICE_CHOICES = (
+    	(ARTICLE, "Article"),
+    	(VIDEO, "Video"),
+    	(MUSIC, "Music"),
+    )
 	title = models.CharField(max_length=100)
 	link = models.URLField(max_length=100)
 	submitted_by = models.ForeignKey(User)
 	submitted_on = models.DateTimeField(auto_now_add=True)
 	description = models.TextField(blank=True)
+	category = models.IntegerField(choices=SERVICE_CHOICES, default=None)
 	with_votes = LinkVoteCountManager()
 	objects = models.Manager() 
 
