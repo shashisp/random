@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', ContentListView.as_view(), name='home'),
+    url(r'^submit/', 'content.views.add_new'),
 )
