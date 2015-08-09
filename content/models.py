@@ -13,10 +13,12 @@ class Content(models.Model):
 	ARTICLE = 0
 	VIDEO = 1
 	MUSIC = 2
+	BOOK = 3
 	SERVICE_CHOICES = (
     	(ARTICLE, "Article"),
     	(VIDEO, "Video"),
     	(MUSIC, "Music"),
+    	(BOOK, "Book"),
     )
 	title = models.CharField(max_length=100)
 	link = models.URLField(max_length=100)
