@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from content.models import Content
+from content.models import Content, Vote
 
 
 class ContentForm(ModelForm):
@@ -19,3 +19,9 @@ class ContentForm(ModelForm):
 	def clean(self):
 		# import ipdb; ipdb.set_trace()
 		pass
+
+class VoteForm(ModelForm):
+
+	class Meta(ModelForm):
+		model = Vote
+		fields = ('content', 'voter')

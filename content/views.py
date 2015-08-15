@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 import content.models as models
-from content.forms import ContentForm
+from content.forms import ContentForm, VoteForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
+from django.views.generic.edit import FormView
 
 class ContentListView(ListView):
 	model = models.Content
@@ -33,3 +34,25 @@ def add_new(request):
     return render(request, 'content/add_content.html', {
         'form': form,
     })
+
+class VoteFormView(FormView):
+    form_class = VoteForm
+
+
+    def form_valid(self, form):
+        content = get_object_or_404(models.Content, pk=form.data["content"])
+        user = self.request.user
+        prev_vote = models.Vote.objects.filter(content=content, voter=user)
+        has_voted = prev_vote.count() > 0
+
+        if not has_voted:
+            models.Vote.objects.create(content=content, voter=user)
+            # import ipdb; ipdb.set_trace()
+            print "voted"
+        else:
+            prev_vote[0].delete()
+
+        return HttpResponseRedirect('/')
+
+def collections(request):
+    return render(request, 'collections.html')

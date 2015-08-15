@@ -5,12 +5,19 @@
 
 <ol>
 {% for content in object_list %}
-    <li>
+  <form method="post" action="{% url 'vote' %}" class="vote_form">
+    <li> [{{ content.votes }}]
+     {% csrf_token %}
+    <input type="hidden" id="id_content" name="content" class="hidden_id" value="{{ content.pk }}" />
+    <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
+    <button>+</button>
     <a href="{{ content.link }}">
-      <b>{{ content.link }}</b>
+      <b>{{ content.title }}</b>
     </a>
     </li>
-{% endfor %}
+  </form>
+  {% endfor %}
 </ol>
 
 {% endblock %}
+
