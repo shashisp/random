@@ -4,21 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Kannada</title>
 	
-	<link href="/static/style.css" rel="stylesheet"/>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 
-	<style>
-	body {
-		margin-top: 100px;
-	}
-	.banner {
-		text-align: center;
-	}
-	.owl {
-		max-width:100% !important;
-		height:auto;
-		display:block;
-	}
-	</style>
+
 </head>
 <body>
 
@@ -31,10 +19,37 @@
 			</ul>
 		</div>
 	</div>
-	
-	{% block content %}
-    {% endblock %}      
-	
+
+	 <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand">Kannada</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/submit" >Submit</a></li>
+            <li><a href="#" target="_blank">Collections</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+	<div class="container">
+	      <!-- <div class="page-header" id="banner"> -->
+		        <div class="row">
+		          {% block content %}
+		          {% endblock %}
+		        </div>
+	       <!-- </div> -->
+      	
+ 	 </div>	
 
 </body>
 </html>

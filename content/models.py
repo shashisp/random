@@ -39,3 +39,11 @@ class Vote(models.Model):
 
 	def __unicode__(self):
 		return "%s upvoted %s" % (self.voter, self.content.title)
+
+
+class Collection(models.Model):
+	title = models.CharField(max_length=150)
+	contents = models.ManyToManyField(Content)
+
+	def __unicode__(self):
+		return self.title
