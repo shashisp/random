@@ -2,15 +2,21 @@
 
 {% block content %}
 
+<br>
+<br>
+<br>
+<br>
+<div class="wrapper">
+    <div class="box">
+        <div class="row">
+			<div class="col-sm-6">
+			<form class="form-class" action='submit/' method='post'>{% csrf_token %}
+			{{ form.as_p }}
+			<input type='submit' value='Submit' />
+			</form>
+			</div>
 
-
-<div class="row">
-	<div class="col-sm-6">
-	<form class="form-class" action='submit/' method='post'>{% csrf_token %}
-	{{ form.as_p }}
-	<input type='submit' value='Submit' />
-	</form>
+		</div>
 	</div>
-
 </div>
 {% endblock %}

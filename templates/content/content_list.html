@@ -2,22 +2,83 @@
 
 {% block content %}
 
-
-<ol>
-{% for content in object_list %}
-  <form method="post" action="{% url 'vote' %}" class="vote_form">
-    <li> [{{ content.votes }}]
-     {% csrf_token %}
-    <input type="hidden" id="id_content" name="content" class="hidden_id" value="{{ content.pk }}" />
-    <input type="hidden" id="id_voter" name="voter" class="hidden_id" value="{{ user.pk }}" />
-    <button>+</button>
-    <a href="{{ content.link }}">
-      <b>{{ content.title }}</b>
-    </a>
-    </li>
-  </form>
-  {% endfor %}
-</ol>
+  <div class="wrapper">
+    <div class="box">
+        <div class="row">
+            <!-- sidebar -->
+            <div class="column col-sm-2">
+               
+            </div>
+            <!-- /sidebar -->
+          
+            <!-- main -->
+            <div class="column col-sm-10" id="main">
+                <div class="padding">
+                    <div class="full col-sm-10">
+                      
+                        <!-- content -->
+                        
+                        <div class="col-sm-12" id="featured">   
+                          <div class="page-header text-muted">
+                          <center><b>Today</b></center>
+                          </div> 
+                        </div>
+                        {% for content in object_list %}
+                        <!--/top story-->
+                        <div class="row">    
+                          <div class="col-sm-10">
+                            <h3>{{ content.title }}</h3>
+                            <h4>
+                              {% if content.category == 0 %}
+                                <span class="label label-success">Article</span>
+                              {% elif content.category == 1 %}
+                                <span class="label label-warning">Video</span>
+                              {% elif content.category == 2 %}
+                                <span class="label label-info">Music</span>
+                              {% elif content.category == 3 %}
+                                <span class="label label-primary">Book</span>
+                              {% endif %}
+                            <small class="text-muted">1 hour ago • <a href="content/{{ content.slug }}" class="text-muted">Read More</a></small>
+                            </h4>
+                          </div>
+                          <div class="col-sm-2">
+                            <a href="#" class="pull-right"><img src="https://pbs.twimg.com/profile_images/635906998958059520/d4ANxx96_400x400.jpg" class="img-circle"></a>
+                          </div> 
+                        </div>
+                        {% endfor %}
+                        
+                        
+                        
+                        <div class="col-sm-12">
+                          <div class="page-header text-muted divider">
+                            Collections Coming soon
+                          </div>
+                        </div>
+                      
+                        <div class="row">    
+                          <div class="col-sm-4 text-center">
+                            <h4>Short Films</h4>
+                            <a href="#"><img src="//placehold.it/400/f0f0f0" class="img-respsonsive img-circle"></a>
+                          </div>
+                          <div class="col-sm-4 text-center">
+                            <h4>Documentries</h4>
+                            <a href="#"><img src="//placehold.it/400/f0f0f0" class="img-respsonsive img-circle"></a>
+                          </div>
+                          <div class="col-sm-4 text-center">
+                            <h4>Must read Books</h4>
+                            <a href="#"><img src="//placehold.it/400/f0f0f0" class="img-respsonsive img-circle"></a>
+                          </div>
+                        </div>
+                      
+                      
+                      
+                    </div><!-- /col-9 -->
+                </div><!-- /padding -->
+            </div>
+            <!-- /main -->
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 

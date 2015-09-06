@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<center>
+	<div>
+		<div class="row">
+			<h2><a href="{{ content.link }}">{{ content.title }}</a></h2>
+			<p>{{ content.description }}</p>
+			<a href="{{ content.link }}"><button class="btn btn-primary">More details</button></a>
+		</div>
+	</div>
+</center>
+
+
+{% endblock %}

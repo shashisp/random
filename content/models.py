@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Count
+from django.utils.text import slugify
 
 class LinkVoteCountManager(models.Manager):
 
@@ -27,10 +28,16 @@ class Content(models.Model):
 	description = models.TextField(blank=True)
 	category = models.IntegerField(choices=SERVICE_CHOICES, default=None)
 	with_votes = LinkVoteCountManager()
-	objects = models.Manager() 
+	objects = models.Manager()
+	slug = models.SlugField(null=True) 
 
 	def __unicode__(self):
 		return self.title
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.title)
+		super(Content, self).save(*args, **kwargs)
 
 
 class Vote(models.Model):

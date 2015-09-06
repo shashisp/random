@@ -7,13 +7,16 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
 from django.views.generic.edit import FormView
+from django.views.generic import DetailView
 
 class ContentListView(ListView):
 	model = models.Content
 	queryset = models.Content.with_votes.all()
 
 
-
+class ContentDetailView(DetailView):
+    model = models.Content
+   
 def add_new(request):
     if request.method == 'GET':
         form = ContentForm()
