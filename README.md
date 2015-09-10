@@ -7,3 +7,8 @@
 
 
 <img src="ss.png">
+
+# toDo
+  1.  add upvote
+  2.  comments
+  3.  social sharing
