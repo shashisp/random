@@ -12,6 +12,7 @@ oauthlib==1.0.1
 path.py==7.6
 pexpect==3.3
 pickleshare==0.5
+oauthlib==1.0.1
 psycopg2==2.6
 PyJWT==1.4.0
 python-openid==2.2.5

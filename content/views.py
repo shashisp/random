@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render_to_response, redirect, render
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import login_required
+
+
 from django.views.generic import ListView
 import content.models as models
 from content.forms import ContentForm, VoteForm
@@ -17,6 +21,8 @@ class ContentListView(ListView):
 class ContentDetailView(DetailView):
     model = models.Content
    
+
+@login_required(login_url='/login/')
 def add_new(request):
     if request.method == 'GET':
         form = ContentForm()
@@ -59,3 +65,13 @@ class VoteFormView(FormView):
 
 def collections(request):
     return render(request, 'collections.html')
+
+
+
+def login(request):
+	return render(request, 'login.html')
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect('/')
