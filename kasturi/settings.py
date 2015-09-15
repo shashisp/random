@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'content',
+    'users',
     'social.apps.django_app.default',
 )
 
@@ -139,4 +140,21 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
-SOCIAL_AUTH_LOGIN_URL = '/'
+SOCIAL_AUTH_LOGIN_URL = '/login/'
+
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.social_user',
+
+    # automatically associated if the email already matches a user account.
+    'social.pipeline.social_auth.associate_by_email',
+
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    # 'users.models.social_auth_to_profile',
+)
