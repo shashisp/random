@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block content %}
 
@@ -26,7 +27,8 @@
                         {% for content in object_list %}
                         <!--/top story-->
                         <div class="row">    
-                          <div class="col-sm-10">
+                          <div class="col-sm-9">
+
                             <h3>{{ content.title }}</h3>
                             <h4>
                               {% if content.category == 0 %}
@@ -38,7 +40,7 @@
                               {% elif content.category == 3 %}
                                 <span class="label label-primary">Book</span>
                               {% endif %}
-                            <small class="text-muted">1 hour ago • <a href="content/{{ content.slug }}" class="text-muted">Read More</a></small>
+                            <small class="text-muted">{{ content.submitted_on |naturaltime }} <a href="content/{{ content.slug }}" class="text-muted">Read More</a></small>
                             </h4>
                           </div>
                           <div class="col-sm-2">
