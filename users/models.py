@@ -13,11 +13,11 @@ class UserProfile(models.Model):
 def social_auth_to_profile(backend, details, response, user=None, is_new=False, *args, **kwargs):
 	if is_new:
 		profile = UserProfile.objects.get_or_create(user=user)
-		profile.save()
+		profile[0].twitter_image = response['profile_image_url_https']
+		profile[0].twitter_handle = response['screen_name']
+		profile[0].save()
 	else:
-		profile = UserProfile.objects.get(user=user)
-		profile.twitter_image = response['profile_image_url_https']
-		profile.twitter_handle = response['screen_name']
+		profile = UserProfile.objects.get_or_create(user=user)
 		profile.save()
 
 

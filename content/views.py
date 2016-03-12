@@ -35,7 +35,7 @@ def add_new(request):
         	link = form.cleaned_data['link']
         	description = form.cleaned_data['description']
         	category = form.cleaned_data['category']
-        	submitted_by = User.objects.get(id=1)
+        	submitted_by = request.user
         	content = models.Content.objects.create(title=title, description=description,
         				link=link, category=category, submitted_by=submitted_by)
         	return HttpResponseRedirect('/')

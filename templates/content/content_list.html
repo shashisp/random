@@ -44,7 +44,8 @@
                             </h4>
                           </div>
                           <div class="col-sm-2">
-                            <a href="#" class="pull-right"><img src="https://pbs.twimg.com/profile_images/635906998958059520/d4ANxx96_400x400.jpg" class="img-circle"></a>
+                            <a href="http://twitter.com/{{ content.submitted_by.userprofile.twitter_handle }}" class="pull-right"><img src="{{ content.submitted_by.userprofile.twitter_image }}" class="img-circle"></a>
+                            <p style="margin-left:20px">@{{ content.submitted_by.userprofile.twitter_handle }}</p>
                           </div> 
                         </div>
                         {% endfor %}
