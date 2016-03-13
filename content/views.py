@@ -12,10 +12,11 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
 from django.views.generic.edit import FormView
 from django.views.generic import DetailView
+from datetime import date
 
 class ContentListView(ListView):
 	model = models.Content
-	queryset = models.Content.with_votes.all()
+	queryset = models.Content.with_votes.filter(submitted_on=date.today())
 
 
 class ContentDetailView(DetailView):

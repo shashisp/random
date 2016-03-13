@@ -18,6 +18,6 @@ def social_auth_to_profile(backend, details, response, user=None, is_new=False, 
 		profile[0].save()
 	else:
 		profile = UserProfile.objects.get_or_create(user=user)
-		profile.save()
+		profile[0].save()
 
 
